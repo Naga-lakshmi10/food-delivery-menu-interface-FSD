@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crave - Premium Food Delivery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- Glassmorphism Navbar -->
+  <nav class="navbar">
+    <div class="logo" onclick="navigate('home')">
+      <i class='bx bx-restaurant'></i> Crave<span>.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="active-link" onclick="navigate('home')">Home</a></li>
+      <li><a href="#menu" onclick="navigate('menu')">Menu</a></li>
+      <li><a href="#about" onclick="navigate('about')">About</a></li>
+      <li><a href="#" onclick="toggleOrderTracking(false)">Track Order</a></li>
+    </ul>
+    <div class="nav-icons">
+      <div class="user-auth" id="userAuthSection">
+        <button class="btn-text" onclick="toggleModal('loginModal')">Login</button>
+        <button class="btn-small btn-primary" onclick="toggleModal('signupModal')">Sign Up</button>
+      </div>
+      <div class="user-profile" id="userProfileSection" style="display: none;">
+        <span id="userNameDisplay">Hi, User</span>
+        <button class="btn-icon" onclick="toggleProfileModal()" title="Profile"><i
+            class='bx bx-user'></i></button>
+        <button class="btn-icon" onclick="toggleOrderTracking()" title="Track Orders"><i
+            class='bx bx-trip'></i></button>
+        <button class="btn-text" onclick="logout()" style="margin-left: 5px; color: #ff5e3a; border-color: rgba(255, 94, 58, 0.3);">Logout</button>
+      </div>
+      <div class="cart-icon" onclick="toggleCart()">
+        <i class='bx bx-shopping-bag'></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Areas -->
+  <main id="main-content">
+
+    <!-- Header / Hero Section -->
+    <section id="home" class="hero section-active">
+      <div class="hero-content">
+        <div class="badge-tag animate-slide-up">Premium Quality</div>
+        <h1 class="animate-slide-up delay-1">Elevate your dining<br>experience <span>at home.</span></h1>
+        <p class="animate-slide-up delay-2">Curated menus from top chefs, delivered with uncompromising quality and presentation. Experience the finest culinary dishes.</p>
+        <div class="hero-buttons animate-slide-up delay-3">
+          <button class="btn-primary" onclick="navigate('menu')">Explore Menu <i
+              class='bx bx-right-arrow-alt'></i></button>
+          <button class="btn-link" onclick="navigate('about')">Discover our story</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+      <div class="section-title">
+        <h2>Our Premium Menu</h2>
+        <p>Choose from our wide variety of artisanal options</p>
+      </div>
+
+      <div class="category-filters" id="categoryFilters">
+        <!-- Categories injected via JS -->
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+        <!-- Menu Items injected via JS -->
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="about-container">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop"
+            alt="Restaurant Interior" />
+        </div>
+        <div class="about-text">
+          <h2>We don't just make food,<br>we make <span>experiences.</span></h2>
+          <p>Founded on the principle of culinary excellence, Crave brings top-tier restaurant quality straight to your
+            door. We use only the finest, locally sourced ingredients prepared by master chefs.</p>
+          <ul class="features">
+            <li><i class='bx bx-check-circle'></i> 100% Organic Ingredients</li>
+            <li><i class='bx bx-check-circle'></i> Eco-friendly Packaging</li>
+            <li><i class='bx bx-check-circle'></i> Contactless Delivery</li>
+            <li><i class='bx bx-check-circle'></i> Real-time Order Tracking</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="close-btn" onclick="toggleCart()"><i class='bx bx-x'></i></button>
+    </div>
+    <div class="cart-items" id="cartItemsContainer">
+      <!-- Cart items injected via JS -->
+      <div class="empty-cart">
+        <i class='bx bx-cart'></i>
+        <p>Your cart is empty.</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotalAmount">₹0.00</span>
+      </div>
+      <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+  <!-- Modals -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeAllModals(event)">
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-header">
+        <h2>Welcome Back</h2>
+        <button class="close-btn" onclick="toggleModal('loginModal')"><i class='bx bx-x'></i></button>
+      </div>
+      <form class="modal-body" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" required placeholder="Enter your email" />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" required placeholder="Enter your password" />
+        </div>
+        <button type="submit" class="btn-primary w-100">Login</button>
+        <p class="auth-switch">Don't have an account? <span onclick="switchModal('loginModal', 'signupModal')">Sign
+            Up</span></p>
+      </form>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+      <div class="modal-header">
+        <h2>Create Account</h2>
+        <button class="close-btn" onclick="toggleModal('signupModal')"><i class='bx bx-x'></i></button>
+      </div>
+      <form class="modal-body" onsubmit="handleSignup(event)">
+        <div class="input-group">
+          <label>Full Name</label>
+          <input type="text" id="signupName" required placeholder="John Doe" />
+        </div>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="signupEmail" required placeholder="john@example.com" />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="signupPassword" required placeholder="Create a password" />
+        </div>
+        <button type="submit" class="btn-primary w-100">Sign Up</button>
+        <p class="auth-switch">Already have an account? <span
+            onclick="switchModal('signupModal', 'loginModal')">Login</span></p>
+      </form>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal" id="profileModal">
+      <div class="modal-header">
+        <h2>Your Profile</h2>
+        <button class="close-btn" onclick="toggleModal('profileModal')"><i class='bx bx-x'></i></button>
+      </div>
+      <form class="modal-body" onsubmit="saveProfile(event)">
+        <div class="profile-avatar">
+          <i class='bx bxs-user-circle'></i>
+        </div>
+        <div class="input-group">
+          <label>Full Name</label>
+          <input type="text" id="profileName" required />
+        </div>
+        <div class="input-group">
+          <label>Email ID</label>
+          <input type="email" id="profileEmail" required />
+        </div>
+        <div class="input-group">
+          <label>Phone Number</label>
+          <input type="tel" id="profilePhone" placeholder="+91 9876543210" />
+        </div>
+        <div class="input-group">
+          <label>Delivery Address</label>
+          <textarea id="profileAddress" rows="3" placeholder="Enter your full address"></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-100">Save Changes</button>
+      </form>
+    </div>
+
+    <!-- Order Tracking Modal -->
+    <div class="modal modal-large" id="trackingModal">
+      <div class="modal-header">
+        <h2>Order Tracking</h2>
+        <button class="close-btn" onclick="toggleModal('trackingModal')"><i class='bx bx-x'></i></button>
+      </div>
+      <div class="modal-body" id="trackingBody">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>Crave<span>.</span></h2>
+        <p>Delivering happiness, one meal at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Crave. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
