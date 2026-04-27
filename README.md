@@ -1,7 +1,7 @@
-# 🍽️ Crave Food Delivery – FSD Lab Project
+# 🍽️ Food Delivery Menu Interface – FSD Lab Project
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Naga-lakshmi10/crave-food-delivery-FSD?color=blue)
-![GitHub last commit](https://img.shields.io/github/last-commit/Naga-lakshmi10/crave-food-delivery-FSD)
+![GitHub repo size](https://img.shields.io/github/repo-size/Naga-lakshmi10/food-delivery-menu-interface-FSD?color=blue)
+![GitHub last commit](https://img.shields.io/github/last-commit/Naga-lakshmi10/food-delivery-menu-interface-FSD)
 ![HTML](https://img.shields.io/badge/HTML-5-orange)
 ![CSS](https://img.shields.io/badge/CSS-3-blue)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-yellow)
@@ -10,15 +10,18 @@
 ---
 
 ## 🌐 Live Demo
-👉 https://naga-lakshmi10.github.io/crave-food-delivery-FSD/
+
+👉 https://naga-lakshmi10.github.io/food-delivery-menu-interface-FSD/
+
+📄 Documentation: [View Full Documentation](DOCUMENTATION.md)
 
 ---
 
 ## 📌 About the Project
 
-Crave Food Delivery is a responsive frontend web application developed as part of the Full Stack Development (FSD) Lab Project.
+Food Delivery Menu Interface is a responsive frontend web application developed as part of the Full Stack Development (FSD) Lab Project.
 
-It simulates a real-world food ordering system with features like menu browsing, cart management, authentication, and order tracking using HTML, CSS, and Vanilla JavaScript.
+It simulates a real-world food ordering system, allowing users to browse food items, manage a cart, authenticate, and track orders through an interactive user interface built using HTML, CSS, and Vanilla JavaScript.
 
 ---
 
@@ -70,13 +73,15 @@ It simulates a real-world food ordering system with features like menu browsing,
 
 ## 📂 Project Structure
 
-```
-crave-food-delivery-FSD/
+```plaintext
+food-delivery-menu-interface-FSD/
 │
 ├── index.html
 ├── styles.css
 ├── script.js
 ├── README.md
+├── DOCUMENTATION.md
+├── Food_Delivery_Documentation.pdf
 ├── images/
 ├── screenshots/
 ```
@@ -87,14 +92,14 @@ crave-food-delivery-FSD/
 
 1. Clone the repository:
 
-```
-git clone https://github.com/Naga-lakshmi10/crave-food-delivery-FSD.git
+```bash
+git clone https://github.com/Naga-lakshmi10/food-delivery-menu-interface-FSD.git
 ```
 
 2. Open the folder:
 
-```
-cd crave-food-delivery-FSD
+```bash
+cd food-delivery-menu-interface-FSD
 ```
 
 3. Run the project:
@@ -105,10 +110,10 @@ cd crave-food-delivery-FSD
 
 ## 👥 Team Members
 
-* Nagalakshmi Karri – Frontend UI
-* Riyaz Mohammed – JavaScript Logic
-* Snigdha Nistala – Authentication
-* Divya Rednam – Testing & Documentation
+* **Nagalakshmi Karri** – Frontend UI & Documentation
+* **Riyaz Mohammed** – JavaScript Logic
+* **Snigdha Nistala** – Authentication
+* **Divya Rednam** – Testing
 
 ---
 
@@ -125,6 +130,12 @@ cd crave-food-delivery-FSD
 
 This is a frontend-only academic project developed for FSD lab submission.
 All data is stored in browser LocalStorage.
+
+---
+
+## 📜 License
+
+This project is developed for academic purposes (FSD Lab).
 
 ---
 
