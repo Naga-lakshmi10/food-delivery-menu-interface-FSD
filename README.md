@@ -126,18 +126,6 @@ cd food-delivery-menu-interface-FSD
 
 ---
 
-## ⚠️ Note
-
-This is a frontend-only academic project developed for FSD lab submission.
-All data is stored in browser LocalStorage.
-
----
-
-## 📜 License
-
-This project is developed for academic purposes (FSD Lab).
-
----
 
 ## ⭐ Support
 
